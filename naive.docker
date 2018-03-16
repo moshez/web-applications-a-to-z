@@ -1,0 +1,14 @@
+FROM python:latest
+
+ENV BLOG_DATABASE sqlite:////mnt/db/blog.db
+
+RUN pip install pyramid sqlalchemy twisted
+RUN mkdir /src/
+COPY twisted /src/twisted/
+COPY blog /src/blog/
+COPY index.html /src/
+COPY static /src/static
+
+WORKDIR /src
+
+ENTRYPOINT ["/usr/local/bin/python", "-m", "twisted", "blog"]

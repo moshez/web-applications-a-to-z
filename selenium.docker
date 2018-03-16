@@ -1,0 +1,43 @@
+FROM python:3
+
+RUN pip install \
+    selenium \
+    requests
+
+RUN export BASE=https://github.com/mozilla/geckodriver && \
+    export LOCATION=releases/download/v0.19.1  && \
+    export NAME=geckodriver-v0.19.1-linux64.tar.gz && \
+    curl -L $BASE/$LOCATION/$NAME \
+    | (cd /usr/local/bin; tar xzf -)
+
+RUN mkdir /firefox
+RUN export CDN=https://download-installer.cdn.mozilla.net/ && \
+    export RELEASE=pub/firefox/releases/58.0.2/ && \
+    export DL=linux-x86_64/en-US/firefox-58.0.2.tar.bz2 && \
+    curl $CDN/$RELEASE/$DL \
+    | (cd /firefox; tar xjf -)
+RUN ln -s /firefox/firefox/firefox \
+    /usr/local/bin/firefox
+
+RUN apt-get update
+RUN apt-get install -y \
+    libgtk-3-0 libdbus-glib-1-2 libX11-xcb1 \
+    Xvfb apt-transport-https ca-certificates \
+    curl gnupg2 software-properties-common
+
+RUN . /etc/os-release && \
+    export DOWNLOAD=https://download.docker.com/ && \
+    curl -fsSL $DOWNLOAD/linux/$ID/gpg \
+    | apt-key add -
+RUN . /etc/os-release && \
+    export DOWNLOAD=https://download.docker.com/ && \
+    add-apt-repository \
+    "deb [arch=amd64] $DOWNLOAD/linux/$ID \
+    $(lsb_release -cs) \
+    stable"
+RUN apt-get update
+RUN apt-get install -y docker-ce
+
+COPY run-test.py /
+
+ENTRYPOINT ["python", "run-test.py"]

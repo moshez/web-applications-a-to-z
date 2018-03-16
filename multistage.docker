@@ -1,0 +1,24 @@
+FROM python:3
+
+RUN python -m venv /appenv
+
+RUN mkdir /src/
+COPY twisted /src/twisted/
+COPY blog /src/blog/
+COPY setup.py /src/
+
+RUN /appenv/bin/pip install /src/
+
+RUN mkdir /appenv/website
+COPY index.html /appenv/website/
+COPY static /appenv/website/static
+
+FROM python:slim-stretch
+
+COPY --from=0 /appenv /appenv/
+
+ENV BLOG_DATABASE sqlite:////mnt/db/blog.db
+WORKDIR /appenv/website/
+EXPOSE 8080
+
+ENTRYPOINT ["/appenv/bin/python", "-m", "twisted", "blog"]
