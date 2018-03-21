@@ -11,8 +11,8 @@ RUN export BASE=https://github.com/mozilla/geckodriver && \
     | (cd /usr/local/bin; tar xzf -)
 
 RUN mkdir /firefox
-RUN export CDN=https://download-installer.cdn.mozilla.net/ && \
-    export RELEASE=pub/firefox/releases/58.0.2/ && \
+RUN export CDN=https://download-installer.cdn.mozilla.net && \
+    export RELEASE=pub/firefox/releases/58.0.2 && \
     export DL=linux-x86_64/en-US/firefox-58.0.2.tar.bz2 && \
     curl $CDN/$RELEASE/$DL \
     | (cd /firefox; tar xjf -)
@@ -26,11 +26,11 @@ RUN apt-get install -y \
     curl gnupg2 software-properties-common
 
 RUN . /etc/os-release && \
-    export DOWNLOAD=https://download.docker.com/ && \
+    export DOWNLOAD=https://download.docker.com && \
     curl -fsSL $DOWNLOAD/linux/$ID/gpg \
     | apt-key add -
 RUN . /etc/os-release && \
-    export DOWNLOAD=https://download.docker.com/ && \
+    export DOWNLOAD=https://download.docker.com && \
     add-apt-repository \
     "deb [arch=amd64] $DOWNLOAD/linux/$ID \
     $(lsb_release -cs) \
