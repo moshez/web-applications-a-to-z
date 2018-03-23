@@ -52,6 +52,7 @@ Disconnect your laptop from the network.
 .. code::
 
     $ python3.6 -m venv /tmp/my-env2
+    $ /tmp/my-env2/pip install --no-cache-dir incremental
     $ /tmp/my-env2/pip install --no-cache-dir pyramid twisted sqlalchemy
 
 If the second succeeds,
