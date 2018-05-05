@@ -30,6 +30,11 @@ Some installation methods will not put Python 3.6 on your path.
 This is fine,
 as long as you know how to invoke it.
 
+If you are on Windows, you also want the `build tools`_.
+Download and install them.
+
+.. _build tools: https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017
+
 DevPI
 -----
 
