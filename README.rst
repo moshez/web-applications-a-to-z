@@ -34,10 +34,23 @@ DevPI
 -----
 
 Install and set up DevPI.
-Again,
-specific instructions will not be given here --
-however,
-we do want to test we have installed it properly.
+There are several ways to do that.
+If you are looking for the simplest,
+in a fresh virtual environment, run the following:
+
+.. code::
+
+  $ pip install devpi
+  $ devpi-server --init
+  $ devpi-server 
+
+Then point :code:`pip` to it by editing :code:`$HOME/.pip/pip.conf` (Linux or MAc) or :code:`$HOME/pip/pip.ini` (Windows).
+
+.. code::
+
+    # $HOME/.pip/pip.conf
+    [global]
+    index-url = http://localhost:3141/root/pypi/+simple/
 
 Warm up DevPI:
 
