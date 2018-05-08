@@ -5,6 +5,12 @@ Welcome to the supporting materials repository for Moshe's PyCon 2018
 tutorial,
 "Web Applications, A to Z".
 
+Cloning the Repository
+----------------------
+
+Please clone this repository using :code:`git clone` to your machine.
+Do not assume you will be able to access GitHub during the tutorials!
+
 Installing
 ----------
 
