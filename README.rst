@@ -98,6 +98,11 @@ We also want to warm up your Docker build cache.
     $ docker build -f multistage.docker .
     $ docker build -f selenium.docker .
 
+Please note all these commands have a period, :code:`.` at the end.
+When copying and pasting the command,
+or retyping it,
+make sure to not miss it!
+
 Since Docker caches layers,
 this will make sure at least the naive and selenium builds will work,
 even if you change your code,
