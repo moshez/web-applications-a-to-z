@@ -73,7 +73,7 @@ Warm up DevPI:
 .. code::
 
     $ python3.6 -m venv /tmp/my-env
-    $ /tmp/my-env/pip install pyramid twisted sqlalchemy
+    $ /tmp/my-env/bin/pip install pyramid twisted sqlalchemy
 
 Disconnect your laptop from the network.
 
@@ -81,8 +81,8 @@ Disconnect your laptop from the network.
 .. code::
 
     $ python3.6 -m venv /tmp/my-env2
-    $ /tmp/my-env2/pip install --no-cache-dir incremental
-    $ /tmp/my-env2/pip install --no-cache-dir pyramid twisted sqlalchemy
+    $ /tmp/my-env2/bin/pip install --no-cache-dir incremental
+    $ /tmp/my-env2/bin/pip install --no-cache-dir pyramid twisted sqlalchemy
 
 If the second succeeds,
 this means your laptop can install packages when disconnected.
