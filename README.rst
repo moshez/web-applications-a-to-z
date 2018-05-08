@@ -102,6 +102,8 @@ Please note all these commands have a period, :code:`.` at the end.
 When copying and pasting the command,
 or retyping it,
 make sure to not miss it!
+When running these commands,
+make sure you have checked that you are in the directory you have cloned from git.
 
 Since Docker caches layers,
 this will make sure at least the naive and selenium builds will work,
