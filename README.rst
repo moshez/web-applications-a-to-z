@@ -22,6 +22,17 @@ Should run and give you indication that it is Python 3.6.
 .. code::
 
     $ docker images
+    
+Note that on some UNIX systems, Docker is installed with access limited to the :code:`docker` group.
+If you get a permission denied message,
+add your user to the docker group
+
+.. code::
+
+    $ sudo usermod -a -G docker $USER
+    
+ Log out, and then log back in -- and your :code:`docker images` should work now.
+    
 
 Should run and show some images
 (an empty list is fine if you just installed it).
